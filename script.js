@@ -1,5 +1,6 @@
 window.player1id = null; 
 window.player2id = null;
+
 window.currentState = "player"; 
 // alternate value is "seasonAv"
 
@@ -80,34 +81,73 @@ player2form.addEventListener("submit", function(event) {
 
 playerOp.addEventListener("click", function(event) {
 	event.preventDefault();
+	document.getElementById("search-container").style.display = "flex"; 
 
 	window.currentState = "player";
 	loadDataValsPlayer();
 	
 
-	loadPlayerData(window.player1id).then(function(newHTML) {
-		document.getElementById("p1-data").innerHTML = newHTML; 
-	}); 
-	loadPlayerData(window.player2id).then(function(newHTML) {
-		document.getElementById("p2-data").innerHTML = newHTML; 
-	}); 
+	if (window.player1id != null) {
+		loadPlayerData(window.player1id).then(function(newHTML) {
+			document.getElementById("p1-data").innerHTML = newHTML; 
+		}); 
+	}
+	if (window.player2id != null) {
+		loadPlayerData(window.player2id).then(function(newHTML) {
+			document.getElementById("p2-data").innerHTML = newHTML; 
+		}); 
+	}
 
 });
 
 seasonAvOp.addEventListener("click", function(event) {
 	event.preventDefault();
 
+	document.getElementById("search-container").style.display = "flex"; 
 	window.currentState = "seasonAv"; 
 	loadDataValsSeasonAvs();
 
-	loadSeasonAvData(window.player1id).then(function(newHTML) {
-		document.getElementById("p1-data").innerHTML = newHTML; 
-	}); 
-	loadSeasonAvData(window.player2id).then(function(newHTML) {
-		document.getElementById("p2-data").innerHTML = newHTML; 
-	}); 
+	if (window.player1id != null) {
+		loadSeasonAvData(window.player1id).then(function(newHTML) {
+			document.getElementById("p1-data").innerHTML = newHTML; 
+		}); 
+	}
+	if (window.player2id != null) {
+		loadSeasonAvData(window.player2id).then(function(newHTML) {
+			document.getElementById("p2-data").innerHTML = newHTML; 
+		}); 
+	}
 
 });
+
+
+document.getElementById("game-op").addEventListener("click", function(event) {
+	getRandomGameOfSeason().then(function(games) {
+		let rand = Math.floor(Math.random() * games.data.length); 
+		let newHTML = 
+			hsw3("Date: " + games.data[rand].date.slice(0,10)) + 
+			hsw3("Season: " + games.data[rand].season) +  
+			hsw3("Home Team City: " + games.data[rand].home_team.city) +  
+			hsw3("Home Team Name: " + games.data[rand].home_team.name) +  
+			hsw3("Visiting Team City: " + games.data[rand].visitor_team.city) + 
+			hsw3("Visiting Team Name: " + games.data[rand].visitor_team.name);  
+			hsw3("Home Team Score: " + games.data[rand].home_team_score) +  
+			hsw3("Visitor Team Score: " + games.data[rand].visitor_team_score); 
+
+		let dataVals = document.getElementById("data-vals"); 
+		dataVals.innerHTML = newHTML;
+		dataVals.style.width = "100%"; 
+		document.getElementById("search-container").style.display = "none"; 
+		document.getElementById("p1-data").innerHTML = ""; 
+		document.getElementById("p2-data").innerHTML = ""; 
+		window.player1id = null;
+		window.player2id = null;
+	}); 
+});
+
+
+
+
 
 // Paragraph Sandwich (for html element)
 function psw(str) {
@@ -288,6 +328,12 @@ async function searchPlayer(playerName) {
 	}
 }
 
+
+async function getRandomGameOfSeason() {
+	let games = await getGamesOfSeason("2020"); 
+	return games;
+}
+
 async function getPlayer(id) {
 	let url = "https://www.balldontlie.io/api/v1/players/" + id; 
 	const response = await fetch(url); 
@@ -302,6 +348,12 @@ async function getSeasonAv(id) {
 	return stats; 
 }
 
+async function getGamesOfSeason(season) {
+	let url = "https://www.balldontlie.io/api/v1/games?per_page=100&season[]=" + season; 
+	const response = await fetch(url);
+	const games = await response.json();
+	return games;
+}
 	
 		
 
