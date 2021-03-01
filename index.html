@@ -3,28 +3,46 @@
 	<head>
 		<title>NBA Comparator</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
 		<link rel="stylesheet" href="/styles.css">
 		<meta charset='UTF-8'/>
 	</head>
 	<body>
 
 		<div class="main-container">
-			<div class="page-header"></div>
+			<div class="page-header">
+				<h1>NBA Comparator</h1>
+			</div>
 			<div class="menu-container">
-				<div class="menu-op" id="player-op"></div>
-				<div class="menu-op" id="season-av-op"></div>
-				<div class="menu-op" id="all-time-op"></div>
+				<div class="menu-op" id="player-op">
+					<h2>Player</h2>
+				</div>
+				<div class="menu-op" id="season-av-op">
+					<h2>Season Averages</h2>
+				</div>
 			</div>
 			<div class="search-container">
-				<div class="search-box" id="p1-search"></div>
-				<div class="search-box" id="p2-search"></div>
+				<div class="search-box" id="p1-search">
+					<form id=player1-form>
+						<label for="player1-name">Player Name</label>
+						<input type="text" size="10" id="player1-name" name="player1-name">
+					</form>
+				</div>
+				<div class="search-box" id="p2-search">
+					<form id=player2-form>
+						<label for="player2-name">Player Name</label>
+						<input type="text" size="10" id="player2-name" name="player2-name">
+					</form>
+				</div>
 			</div>
 			<div class="data-container">
 				<div class="data-box" id="p1-data"></div>
-				<div class="data-vars"></div>
+				<div id="data-vals"></div>
 				<div class="data-box" id="p2-data"></div>
 			</div> 
-			<div class="footer"></div>
+			<div class="footer">
+				<p>https://github.com/issmith962/cs260clab2.git</p>
+			</div>
 		</div>
 
 		<script text="type/javascript" src="/script.js"></script>
