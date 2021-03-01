@@ -24,6 +24,7 @@ player1form.addEventListener("submit", function(event) {
 				window.player1id = null;
 				let p1Data = document.getElementById("p1-data");
 				p1Data.innerHTML = "<p>No player found</p>"; 
+				p1Data.style.textAlign = "top";
 			} else {
 				window.player1id = player.id; 
 				if (window.currentState == "player") {
@@ -135,9 +136,9 @@ function loadDataValsPlayer() {
 	 */
 	
 	let newHTML = 
-		hsw3("First Name") + hsw3("Last Name") + hsw3("Position") 
-		+ hsw3("Height") + hsw3("Weight") + hsw3("City") + hsw3("Team") 
-		+ hsw3("Team Division") + hsw3("Team Conference"); 
+		hsw4("First Name") + hsw4("Last Name") + hsw4("Position") 
+		+ hsw4("Height") + hsw4("Weight") + hsw4("City") + hsw4("Team") 
+		+ hsw4("Team Division") + hsw4("Team Conference"); 
 	dataVals.innerHTML = newHTML; 
 	
 	document.getElementById("p1-data").style.width = "25vw";
