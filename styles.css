@@ -43,16 +43,14 @@ input {
 	justify-content:center;
 	align-items:center;
 
-	border:solid 1px black;
 	width:100%;
 }
 .data-container {
 	display:flex;
 	flex-direction:row;
 	justify-content:center;
-	align-items:center;
+	align-items:left;
 	
-	border:solid 1px black;
 	height:100%;
 }
 .footer {
@@ -67,6 +65,7 @@ input {
 }
 
 .menu-op {
+	/*border:solid 1px black;*/
 	border:solid 1px black;
 }
 #player-op {
@@ -78,17 +77,23 @@ input {
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	border:solid 1px black;
 }
 #p1-search {
+	display:flex;
+	justify-content:center;
+	text-align:center;
+	margin-right:2vw;
 }
 #p2-search {
+	display:flex;
+	justify-content:center;
+	text-align:center;
+	margin-left:2vw;
 }
 
 
 .data-box {
 	/*border:solid 1px black;*/
-	border:solid 1px black;
 	height:100%;
 }
 #data-vals {
@@ -97,6 +102,7 @@ input {
 
 	height:100%;
 	margin: 0vw 2vw;
+	width:40vw;
 }
 #p1-data {
 	text-align:right; 

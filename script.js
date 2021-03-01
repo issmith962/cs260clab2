@@ -22,6 +22,8 @@ player1form.addEventListener("submit", function(event) {
 		searchPlayer(playerName).then(function(player) {
 			if (player == null) {
 				window.player1id = null;
+				let p1Data = document.getElementById("p1-data");
+				p1Data.innerHTML = "<p>No player found</p>"; 
 			} else {
 				window.player1id = player.id; 
 				if (window.currentState == "player") {
@@ -54,6 +56,7 @@ player2form.addEventListener("submit", function(event) {
 		searchPlayer(playerName).then(function(player) {
 			if (player == null) {
 				window.player2id = null;
+				document.getElementById("p2-data").innerHTML = "<p>No player found</p>"; 
 			} else {
 				window.player2id = player.id; 
 				if (window.currentState == "player") {
@@ -136,6 +139,10 @@ function loadDataValsPlayer() {
 		+ hsw3("Height") + hsw3("Weight") + hsw3("City") + hsw3("Team") 
 		+ hsw3("Team Division") + hsw3("Team Conference"); 
 	dataVals.innerHTML = newHTML; 
+	
+	document.getElementById("p1-data").style.width = "25vw";
+	document.getElementById("p2-data").style.width = "25vw";
+	document.getElementById("data-vals").style.width = "40vw";
 }
 async function loadPlayerData(id) {
 	let data = await getPlayer(id); 
@@ -216,6 +223,10 @@ function loadDataValsSeasonAvs() {
 		hsw4("Turnovers") + 
 		hsw4("Personal Fouls"); 
 	dataVals.innerHTML = newHTML; 
+
+	document.getElementById("p1-data").style.width = "20vw";
+	document.getElementById("p2-data").style.width = "20vw";
+	document.getElementById("data-vals").style.width = "50vw";
 	
 }
 async function loadSeasonAvData(id) {
