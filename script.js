@@ -120,7 +120,6 @@ seasonAvOp.addEventListener("click", function(event) {
 
 });
 
-
 document.getElementById("game-op").addEventListener("click", function(event) {
 	getRandomGameOfSeason().then(function(games) {
 		let rand = Math.floor(Math.random() * games.data.length); 
