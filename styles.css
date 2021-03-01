@@ -81,13 +81,13 @@ input {
 #p1-search {
 	display:flex;
 	justify-content:center;
-	text-align:center;
+	text-align:left;
 	margin-right:2vw;
 }
 #p2-search {
 	display:flex;
 	justify-content:center;
-	text-align:center;
+	text-align:right;
 	margin-left:2vw;
 }
 
