@@ -1,31 +1,48 @@
 .body, footer {
- font-family: 'Cardo', serif;
+	font-family: 'Cardo', serif;
 }
 label, h1, h2, h3, h4, h5, h6 {
- font-family: 'Oswald', sans-serif;
- text-transform: uppercase;
- white-space: nowrap;
- overflow:hidden; 
- text-overflow:ellipsis;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
 }
 input {
 	display:inline;
 }
 
+body {
+	background-color:#c4c4c4;
+}
 #main-container {
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between; 
 	align-items:center;
-	
+
 	min-height:100vh;
 }
-.page-header {
+#page-header {
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	
+
 	width:100%;
+	background-color:#17408b;
+	color:white;
+}
+#blue-filler {
+	height:2vh;
+	width:100%;
+	background-color:#17408b;
+	color:white;
+}
+#red-filler {
+	height:2vh;
+	width:100%;
+	background-color:#C9082a;
+	color:white;
 }
 #menu-container {
 	display:flex;
@@ -40,14 +57,16 @@ input {
 	align-items:center;
 
 	width:100%;
+	padding-bottom:1vh;
 }
 #data-container {
 	display:flex;
 	flex-direction:row;
 	justify-content:center;
 	align-items:left;
-	
+
 	height:100%;
+	padding-top:1vh;
 }
 .footer {
 	display:flex;
@@ -57,6 +76,14 @@ input {
 	width:100%;
 	width:100%;
 	margin-top:auto;
+
+	background-color:#17408b;
+	color:white;
+	padding:2vh 0vh;
+}
+#github-link {
+	text-decoration:none;
+	color:white;
 }
 
 .menu-op {
@@ -97,26 +124,29 @@ input[type=text] {
 .data-box {
 	/*border:solid 1px black;*/
 	height:100%;
+	background-color:#919191;
 }
 #data-vals {
 	display:inline-block;
 	text-align:center;
 
 	height:100%;
-	margin: 0vw 2vw;
 	width:40vw;
+	padding:0vh 1vh;
 }
 #p1-data {
 	text-align:right; 
 	margin-right:auto;
 	width:25vw; 
 	height:100%;
+	padding-right:2vh;
 }
 #p2-data {
 	text-align:left;
 	margin-left:auto;
 	width:25vw; 
 	height:100%;
+	padding-left:2vh;
 }
 
 @media (min-width: 700px) {

@@ -2,8 +2,9 @@ window.player1id = null;
 window.player2id = null;
 
 window.currentState = "player"; 
-// alternate value is "seasonAv"
 
+window.screenSizeQuery = window.matchMedia("(min-width: 700px)");
+// alternate value is "seasonAv"
 let player1form = document.getElementById("player1-form");
 let player2form = document.getElementById("player2-form");
 
@@ -124,6 +125,7 @@ document.getElementById("game-op").addEventListener("click", function(event) {
 	getRandomGameOfSeason().then(function(games) {
 		let rand = Math.floor(Math.random() * games.data.length); 
 		let newHTML = 
+			"<h2>A Random Game from a Recent Season</h2>" + 
 			hsw3("Date: " + games.data[rand].date.slice(0,10)) + 
 			hsw3("Season: " + games.data[rand].season) +  
 			hsw3("Home Team City: " + games.data[rand].home_team.city) +  
@@ -180,9 +182,18 @@ function loadDataValsPlayer() {
 		+ hsw4("Team Division") + hsw4("Team Conference"); 
 	dataVals.innerHTML = newHTML; 
 	
-	document.getElementById("p1-data").style.width = "25vw";
-	document.getElementById("p2-data").style.width = "25vw";
-	document.getElementById("data-vals").style.width = "40vw";
+	if (window.screenSizeQuery.matches) {
+		document.getElementById("p1-data").style.width = "15vw";
+		document.getElementById("p2-data").style.width = "15vw";
+		document.getElementById("data-vals").style.width = "20vw";
+	}
+	else {
+		document.getElementById("p1-data").style.width = "25vw";
+		document.getElementById("p2-data").style.width = "25vw";
+		document.getElementById("data-vals").style.width = "40vw";
+	}
+
+	
 }
 async function loadPlayerData(id) {
 	let data = await getPlayer(id); 
@@ -264,10 +275,16 @@ function loadDataValsSeasonAvs() {
 		hsw4("Personal Fouls"); 
 	dataVals.innerHTML = newHTML; 
 
-	document.getElementById("p1-data").style.width = "20vw";
-	document.getElementById("p2-data").style.width = "20vw";
-	document.getElementById("data-vals").style.width = "50vw";
-	
+	if (window.screenSizeQuery.matches) {
+		document.getElementById("p1-data").style.width = "15vw";
+		document.getElementById("p2-data").style.width = "15vw";
+		document.getElementById("data-vals").style.width = "20vw";
+	}
+	else {
+		document.getElementById("p1-data").style.width = "25vw";
+		document.getElementById("p2-data").style.width = "25vw";
+		document.getElementById("data-vals").style.width = "40vw";
+	}
 }
 async function loadSeasonAvData(id) {
 	let json = await getSeasonAv(id); 
